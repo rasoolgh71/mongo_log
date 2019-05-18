@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<!-- Bootstrap 3.3.7 -->
+<link rel="stylesheet" href="{% static 'bower_components/font-awesome/css/font-awesome.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'dist/my_css/File_list.css' %}">
+<link rel="stylesheet" href="{% static 'dist/css/bootstrap-theme.css' %} ">
+<!-- Bootstrap rtl -->
+<link rel="stylesheet" href="{% static 'dist/css/rtl.css' %}">
+<link rel="stylesheet" href="{% static 'dist/css/persian-datepicker.css' %}">
+<link rel="stylesheet" href="{% static 'bower_components/bootstrap-daterangepicker/daterangepicker.css' %}">
+
+
+<body>
+<section class="content">
+  <div class="row">
+
+    <div class="col-md-12">
+      <h1 style="text-align: center">گزارش ثبت نام کاربران </h1>
+    </div>
+  </div>
+  <form method="POST" id="log_mongo" action="" enctype="multipart/form-data">
+  <div class="row">
+
+      {% csrf_token %}
+      <div class="box-body">
+          <div class="form-group col-sm-6 col-md-3" style="right:250px">
+            <label for="as_date">از تاریخ :</label>
+             <div class="input-group date">
+               <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input type="text" name="as_date" class="form-control date" id="date_start" required>
+             </div>
+             </div>
+          </div>
+<!--    <div class="form-group col-sm-6 col-md-3">-->
+<!--      <label for="as_time">از ساعت:</label>-->
+<!--      <input type="time" name="as_time" class="form-control date" id="as_time" required>-->
+<!--    </div>-->
+        <div class="form-group col-sm-6 col-md-3"  style="right:350px">
+           <label for="ta_date">تا تاریخ :</label>
+               <div class="input-group date">
+               <div class="input-group-addon">
+               <i class="fa fa-calendar"></i>
+              </div>
+             <input type="text" name="ta_date" class="form-control date" id="date_end" required>
+            </div>
+          </div>
+<!--    <div class="form-group col-sm-6 col-md-3">-->
+<!--      <label for="ta_time"> تا ساعت:</label>-->
+<!--      <input type="time" name="ta_time" class="form-control date" id="ta_time" required>-->
+<!--    </div>-->
+  </div>
+      <div class="row" style="text-align: center">
+        <button type="submit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-search"></span>  ساخت گزارش ودانلود فایل csv
+          </button>
+      </div>
+
+
+  </form>
+</section>
+</body>
+<script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+
+
+<script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+
+
+<script src="{% static 'bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+<script src="{% static 'bower_components/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+
+<script src="{% static 'dist/js/persian-date.js' %}"></script>
+<script src="{% static 'dist/js/persian-datepicker.min.js' %}"></script>
+
+
+<!--<script src="{% static 'dist/js/listfiles.js' %}"></script>-->
+<!-- babakhani datepicker -->
+<script>
+  $(document).ready(function () {
+    console.log("hi rasool")
+    $('#date_start').persianDatepicker({
+      altFormat: 'X',
+      calendarType: 'persian',
+      persianDigit: false,
+      format: 'YYYY/MM/D',
+      observer: true,
+      initialValue: true,
+      timePicker: {
+        enabled: false
+      },
+      toolbox: {
+        calendarSwitch: {
+          enabled: false
+        }
+      },
+    });
+    $('#date_end').persianDatepicker({
+      altFormat: 'X',
+      calendarType: 'persian',
+      persianDigit: false,
+      format: 'YYYY/MM/D',
+      observer: true,
+      initialValue: true,
+      timePicker: {
+        enabled: false
+      },
+      toolbox: {
+        calendarSwitch: {
+          enabled: false
+        }
+      },
+    });
+  });
+</script>
+
+</html>
